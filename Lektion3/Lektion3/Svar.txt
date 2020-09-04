@@ -1,0 +1,28 @@
+===EXERCISE 1===
+1A) Se ReportGeneratorCd.png
+
+
+1B)
+Hent data relateret til rapporten - ReportDataFetcher klasse
+Udskriv rapporten i korrekt format - ReportPrinter klasse
+
+1C) ReportGenerator's nye ansvar er at kombinere funktionaliteten fra ReportDataFetcher og ReportPrinter til at
+udskrive en færdig rapport.
+
+
+1D) Done
+
+===EXERCISE 2===
+
+2A) 
+Employee skal have tilføjet en age attribut, samt constructor skal opdateres.
+I ReportGeneratorClient, skal der opdateres således clienten bruger den nye constructor.
+Der skal tilføjes en ny case i switch casen i CompileReport.
+ReportOutputFormatType skal opdateres således den indeholder en "AgeFirst" enum værdi
+
+
+3B)
+Følger allerede?
+
+3C)
+Done
