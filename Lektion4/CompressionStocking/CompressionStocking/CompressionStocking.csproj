@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IStocking.cs" />
+    <Compile Include="StockingPressureGauge.cs" />
     <Compile Include="LaceCompressionCtrl.cs" />
     <Compile Include="PumpCompressionCtrl.cs" />
     <Compile Include="StockingCtrl.cs" />

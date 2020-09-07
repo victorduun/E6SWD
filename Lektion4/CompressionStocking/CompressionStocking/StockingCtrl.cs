@@ -13,15 +13,15 @@ namespace CompressionStocking
 
 
 
-    public class StockingCtrl : IBtnHandler
+    public class StockingCtrl : IBtnHandler, IStocking
     {
         private readonly ICompressionCtrl _compressionCtrl;
-
 
 
         public StockingCtrl(ICompressionCtrl compressionCtrl)
         {
             _compressionCtrl = compressionCtrl;
+
 
             _compressionCtrl.CompressionFinishedEvent += OnCompressionFinishedEvent;
             _compressionCtrl.CompressionStartedEvent += OnCompressionStartedEvent;
@@ -60,6 +60,6 @@ namespace CompressionStocking
             _compressionCtrl.Decompress();
         }
 
-
+        public int Pressure { get; set; } = 1013;
     }
 }

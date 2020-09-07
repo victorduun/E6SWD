@@ -10,6 +10,26 @@ namespace CompressionStocking
 {
     public class PumpCompressionCtrl : ICompressionCtrl
     {
+        private readonly IStocking _stocking;
+
+        public PumpCompressionCtrl(IStocking stocking)
+        {
+            _stocking = stocking;
+            var stockingPressureGauge = new StockingPressureGauge(stocking);
+
+            stockingPressureGauge.AboveSufficientCompressionPressureEvent += OnAboveSufficientCompressionPressureEvent;
+            stockingPressureGauge.BelowSufficientDecompressionPressureEvent += OnBelowSufficientDecompressionPressureEvent;
+        }
+
+        private void OnAboveSufficientCompressionPressureEvent(object sender, EventArgs e)
+        {
+            IsCompressed = true;
+        }
+
+        private void OnBelowSufficientDecompressionPressureEvent(object sender, EventArgs e)
+        {
+            IsCompressed = false;
+        }
 
         private bool IsPumpActive { get; set; } = false;
         private bool IsCompressed { get; set; } = false;
@@ -30,10 +50,13 @@ namespace CompressionStocking
                 IsPumpActive = true;
                 Task.Factory.StartNew(() =>
                     {
-                        Thread.Sleep(5000);
-                        IsPumpActive = false;
-                        IsCompressed = true;
+                        while (!IsCompressed)
+                        {
+                            _stocking.Pressure += 1;
+                            Thread.Sleep(1);
+                        }
                         Console.WriteLine("Pump compression complete");
+                        IsPumpActive = false;
                         CompressionFinishedEvent?.Invoke(this, EventArgs.Empty);
                     });
             }
@@ -53,10 +76,13 @@ namespace CompressionStocking
                 IsPumpActive = true;
                 Task.Factory.StartNew(() =>
                 {
-                    Thread.Sleep(2000);
-                    IsPumpActive = false;
-                    IsCompressed = false;
+                    while (IsCompressed)
+                    {
+                        _stocking.Pressure -= 1;
+                        Thread.Sleep(1);
+                    }
                     Console.WriteLine("Pump decompression complete");
+                    IsPumpActive = false;
                     DecompressionFinishedEvent?.Invoke(this, EventArgs.Empty);
                 });
             }

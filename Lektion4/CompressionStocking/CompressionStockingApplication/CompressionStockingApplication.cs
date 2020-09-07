@@ -13,7 +13,9 @@ namespace CompressionStockingApplication
     {
         static void Main(string[] args)
         {
-            var compressionStockingstocking = new StockingCtrl(new LaceCompressionCtrl());
+            IStocking stocking = new Stocking();
+            ICompressionCtrl compressionCtrl = new PumpCompressionCtrl(stocking);
+            IBtnHandler compressionStockingstocking = new StockingCtrl(compressionCtrl);
             ConsoleKeyInfo consoleKeyInfo;
             
             Console.WriteLine("Compression Stocking Control User Interface");
