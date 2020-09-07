@@ -1,0 +1,12 @@
+1A) Se ReportGeneratorCd.png
+
+
+1B)
+Hent data relateret til rapporten - ReportDataFetcher klasse
+Udskriv rapporten i korrekt format - ReportPrinter klasse
+
+1C) ReportGenerator's nye ansvar er at kombinere funktionaliteten fra ReportDataFetcher og ReportPrinter til at
+udskrive en færdig rapport.
+
+
+1D)
