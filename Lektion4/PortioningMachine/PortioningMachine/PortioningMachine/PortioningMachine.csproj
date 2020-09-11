@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Container" />
+    <None Remove="Items" />
+    <None Remove="NewFile1.txt" />
+    <None Remove="P" />
+    <None Remove="SystemComponents\NewFile1.txt" />
+  </ItemGroup>
+
+</Project>
