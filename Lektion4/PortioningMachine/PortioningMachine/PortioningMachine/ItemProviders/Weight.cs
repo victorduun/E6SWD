@@ -2,9 +2,8 @@
 {
     public class Weight
     {
-        public Weigh()
+        public Weight()
         {
-
         }
 
     }

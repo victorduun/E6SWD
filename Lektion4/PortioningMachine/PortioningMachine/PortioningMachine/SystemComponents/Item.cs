@@ -4,10 +4,10 @@ using System.Text;
 
 namespace PortioningMachine.SystemComponents
 {
-    public class Item
+    public class Item : IItem
     {
-        public int Id { get; set; }
-        public int Weight { get; set; }
+        public uint Id { get; set; }
+        public double Weight { get; set; }
     }
     public class ChickenBreast
     {

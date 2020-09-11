@@ -1,5 +1,4 @@
 ﻿using System.Threading;
-using PortioningMachine.SystemComponent;
 using PortioningMachine.SystemComponents;
 
 namespace PortioningMachine.ItemProviders
