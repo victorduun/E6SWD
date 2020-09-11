@@ -24,7 +24,7 @@ namespace PortioningMachine.ItemProviders
 
         private void OnItemArrived(IItem i)
         {
-            if (ItemArrived != null) ItemArrived(this, i);
+            ItemArrived?.Invoke(this, i);
         }
 
         private void Run()

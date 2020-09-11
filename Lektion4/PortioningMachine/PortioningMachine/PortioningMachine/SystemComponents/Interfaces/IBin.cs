@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PortioningMachine
+namespace PortioningMachine.SystemComponents.Interfaces
 {
-    class Portioner
+    public interface IBin
     {
     }
 }
