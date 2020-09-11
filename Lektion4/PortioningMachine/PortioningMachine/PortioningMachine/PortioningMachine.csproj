@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -10,6 +10,7 @@
     <None Remove="Items" />
     <None Remove="NewFile1.txt" />
     <None Remove="P" />
+    <None Remove="SystemComponents\Interfaces\NewFile1.txt" />
     <None Remove="SystemComponents\NewFile1.txt" />
   </ItemGroup>
 

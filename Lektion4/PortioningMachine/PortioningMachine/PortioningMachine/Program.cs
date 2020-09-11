@@ -1,19 +1,24 @@
 ﻿using System;
-using PortioningMachine.ItemProviders;
+using PortioningMachine.ItemHandlers;
 using PortioningMachine.SystemComponents;
+using PortioningMachine.SystemComponents.Interfaces;
 
 namespace PortioningMachine
 {
     class Program
     {
 
-        private static readonly PortioningMachine _portioningMachine = new PortioningMachine();
+        private static PortioningMachine _portioningMachine;
         private static readonly ItemProvider _itemProvider = new ItemProvider(new GaussianDistribution(100, 10));
 
         static void Main(string[] args)
         {
+            Container container = new Container();
+            _portioningMachine = new PortioningMachine(container);
+
             _itemProvider.ItemArrived += FeedPortioningMachine;
             _itemProvider.Go();
+
             while (true)
             {
             }

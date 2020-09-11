@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PortioningMachine.ItemProviders
+namespace PortioningMachine.ItemHandlers
 {
     // Adapted from http://stackoverflow.com/questions/1303368/how-to-generate-normally-distributed-random-from-an-integer-range
     public interface IDistribution

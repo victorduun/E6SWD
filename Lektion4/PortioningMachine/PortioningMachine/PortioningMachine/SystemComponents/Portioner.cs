@@ -1,4 +1,8 @@
-﻿using System.Threading;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using PortioningMachine.SystemComponents.Interfaces;
 using PortioningMachine.SystemComponents;
@@ -6,18 +10,25 @@ using PortioningMachine.ItemHandlers;
 
 namespace PortioningMachine.SystemComponents
 {
-    public class Weight : IWeight, IItemConveyer
+    public class Portioner : IPortioner, IItemConveyer
     {
-        public Weight(IItemConveyer nextConveyer)
+        private readonly IEnumerable<IItemConveyer> _bins;
+
+        public Portioner(IEnumerable<IItemConveyer> bins)
         {
-            NextConveyer = nextConveyer;
+            _bins = bins;
             ItemArrived += OnItemArrived;
         }
+
 
         private void OnItemArrived(object o, IItem item)
         {
             Task.Run(() =>
             {
+                NextConveyer = _bins.First();
+
+
+
                 Thread.Sleep(10);
                 NextConveyer.PutItemInConveyer(item);
             });

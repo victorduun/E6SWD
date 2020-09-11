@@ -1,7 +1,7 @@
 ﻿
 using PortioningMachine.SystemComponents;
 
-namespace PortioningMachine.ItemProviders
+namespace PortioningMachine.ItemHandlers
 {
     public delegate void ItemArrivedHandler(object o, IItem item);
 

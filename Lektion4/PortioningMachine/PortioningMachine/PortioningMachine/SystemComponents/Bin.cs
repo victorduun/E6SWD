@@ -1,26 +1,30 @@
-﻿using PortioningMachine.ItemProviders;
+﻿using PortioningMachine.ItemHandlers;
 using PortioningMachine.SystemComponents.Interfaces;
+using System;
 
 namespace PortioningMachine.SystemComponents
 {
     public class Bin : IBin, IItemConveyer
     {
 
-        public Bin()
+        public Bin(IItemConveyer nextConveyer )
         {
-
+            NextConveyer = nextConveyer;
+            ItemArrived += OnItemArrived;
         }
+
+        public IItemConveyer NextConveyer { get; set; }
 
         public event ItemArrivedHandler ItemArrived;
-  
-        public void ReceiveItem(IItem item)
+
+        public void PutItemInConveyer(IItem item)
         {
-            throw new System.NotImplementedException();
+            ItemArrived?.Invoke(this, item);
         }
 
-        public void ConveyItem(IItemConveyer itemConveyer)
+        private void OnItemArrived(object o, IItem item)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
     }

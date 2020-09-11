@@ -1,17 +1,27 @@
-﻿namespace PortioningMachine.ItemProviders
+﻿using PortioningMachine.SystemComponents;
+using System;
+
+namespace PortioningMachine.ItemHandlers
 {
-    public class Container : IItemProvider
+    public class Container : IItemConveyer
     {
         public Container()
         {
-
+            ItemArrived += OnItemArrived;
         }
+
+        private void OnItemArrived(object o, IItem item)
+        {
+            throw new NotImplementedException();
+        }
+
+        IItemConveyer IItemConveyer.NextConveyer { get; set; } = null;
 
         public event ItemArrivedHandler ItemArrived;
 
-        public void Go()
+        public void PutItemInConveyer(IItem item)
         {
-            throw new System.NotImplementedException();
+            ItemArrived?.Invoke(this, item);
         }
     }
 }
