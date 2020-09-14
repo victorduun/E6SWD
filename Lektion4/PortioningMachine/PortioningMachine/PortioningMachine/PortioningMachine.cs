@@ -40,6 +40,16 @@ namespace PortioningMachine
                 _log.LogMessage(i + " Arrived at infeed");
             });
 
+            foreach (IBin bin in _bins)
+            {
+                bin.BinEmptied += new BinEmptiedHandler(delegate (object o, BinStat binStat)
+                {
+                    IBin bin = o as IBin;
+                    _log.LogMessage($"Bin {binStat.BinNumber} emptied. Current weight: {binStat.Weight:n0}. Target weight: {binStat.TargetWeight:n0}, Give-away: {binStat.Giveaway:n2}%");
+                });
+            }
+            
+
         }
 
        

@@ -24,10 +24,29 @@ namespace PortioningMachine.SystemComponents
             ItemArrived?.Invoke(this, item);
         }
 
+        public double Giveaway
+        {
+            get
+            {
+                if (TargetWeight == 0)
+                    return 0;
+                return ((CurrentWeight / TargetWeight) * 100) - 100;
+            }
+        }
+
         public void Empty()
         {
+            BinStat binStat = new BinStat
+            {
+                BinNumber = BinNumber,
+                TargetWeight = TargetWeight,
+                Weight = CurrentWeight,
+                Giveaway = Giveaway
+            };
+
             _container.DumpItems(ItemsInBin);
             ItemsInBin = new List<IItem>();
+            BinEmptied?.Invoke(this, binStat);
         }
 
         public double CurrentWeight
@@ -45,5 +64,6 @@ namespace PortioningMachine.SystemComponents
         public int BinNumber { get; private set; }
 
         public event ItemArrivedHandler ItemArrived;
+        public event BinEmptiedHandler BinEmptied;
     }
 }
