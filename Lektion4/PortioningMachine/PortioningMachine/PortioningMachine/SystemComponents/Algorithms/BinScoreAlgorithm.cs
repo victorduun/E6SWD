@@ -9,32 +9,28 @@ namespace PortioningMachine.SystemComponents.Algorithms
     public class BinScoreAlgorithm : IAssignmentAlgorithm
     {
 
-        public int Next(List<IBin> bins, IItem nextItem)
+        public int Next(IEnumerable<IBin> bins, IItem nextItem)
         {
 
             foreach (var bin in bins)
             {
                 double combinedWeight = bin.CurrentWeight + nextItem.AssignedWeight;
 
-                if (combinedWeight <= bin.TargetWeight)
+                if (bin.TargetWeight == 0)
                     bin.Score = 1;
+                double giveaway = (((bin.CurrentWeight + nextItem.AssignedWeight) / bin.TargetWeight));
+
+                if (combinedWeight <= bin.TargetWeight)
+                    bin.Score = 1+giveaway;
                 else
                 {
-                    if (bin.TargetWeight == 0)
-                        bin.Score = 1;
-                    else
-                    {
-                        double giveaway = (((bin.CurrentWeight + nextItem.AssignedWeight) / bin.TargetWeight) * 100) -
-                                          100;
-                        bin.Score = (1 - giveaway);
-                    }
-
+                    bin.Score = (1 - giveaway);
                 }
             }
 
-            bins.OrderByDescending(b => b.Score);
+            IEnumerable<IBin> sortedBins = bins.OrderByDescending(b => b.Score);
 
-            return bins.First().BinNumber;
+            return sortedBins.First().BinNumber;
         }
 
 

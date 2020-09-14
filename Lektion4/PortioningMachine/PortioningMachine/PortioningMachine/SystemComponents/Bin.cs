@@ -60,7 +60,7 @@ namespace PortioningMachine.SystemComponents
             }
         }
         public double Score { get;set; }
-        public double TargetWeight { get; set; } = 1000; //gram
+        public double TargetWeight { get; set; } = 50000; 
         public int BinNumber { get; private set; }
 
         public event ItemArrivedHandler ItemArrived;

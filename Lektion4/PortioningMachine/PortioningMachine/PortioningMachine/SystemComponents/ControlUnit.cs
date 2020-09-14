@@ -36,7 +36,6 @@ namespace PortioningMachine.SystemComponents
             if (bin.CurrentWeight >= bin.TargetWeight)
             {
                 bin.Empty();
-                Console.WriteLine("Bin emptied");
             }
 
         }
@@ -44,7 +43,6 @@ namespace PortioningMachine.SystemComponents
 
         private void OnItemWeighedEvent(object o, IItem item)
         {
-            //TODO: Assign a proper binnumber
             item.AssignedBinNumber = _assignmentAlgorithm.Next(Bins, item);
         }
 

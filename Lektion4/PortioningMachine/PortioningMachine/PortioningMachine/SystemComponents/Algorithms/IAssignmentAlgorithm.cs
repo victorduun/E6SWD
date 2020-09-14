@@ -7,7 +7,7 @@ namespace PortioningMachine.SystemComponents.Interfaces
 {
     public interface IAssignmentAlgorithm
     {
-        public int Next(List<IBin> bins, IItem nextItem);
+        public int Next(IEnumerable<IBin> bins, IItem nextItem);
     }
 
    

@@ -7,14 +7,10 @@ namespace PortioningMachine
 {
     public class Container
     {
-        //TODO: Make event that items have been dumped
-
-
         public void DumpItems(List<IItem> items)
         {
             items = null;
         }
-
 
     }
 }

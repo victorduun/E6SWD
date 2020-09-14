@@ -39,7 +39,7 @@ namespace PortioningMachine
 
             _inFeed.ItemArrived += new ItemArrivedHandler(delegate(object o, IItem i)
             {
-                _log.LogMessage($"Item with id {i.Id} arrived at infeed");
+                //_log.LogMessage($"Item with id {i.Id} arrived at infeed");
             });
 
             foreach (IBin bin in _bins)
