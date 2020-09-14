@@ -31,7 +31,7 @@ namespace PortioningMachine.ItemHandlers
         {
             while (true)
             {
-                IItem item = new Item { Id = ++_itemId, Weight = _dist.Next() };
+                IItem item = new Item { Id = ++_itemId, ActualWeight = _dist.Next() };
                 OnItemArrived(item);
                 Thread.Sleep(10);
             }

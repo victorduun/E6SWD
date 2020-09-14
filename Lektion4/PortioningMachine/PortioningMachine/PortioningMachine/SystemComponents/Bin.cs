@@ -5,31 +5,18 @@ using System.Collections.Generic;
 
 namespace PortioningMachine.SystemComponents
 {
-    public class Bin : IBin, IItemConveyer
+    public class Bin : IBin
     {
+        private readonly Container _container;
 
-        public Bin(IItemConveyer nextConveyer )
+        public Bin(Container container, int binNumber )
         {
-            NextConveyer = nextConveyer;
-            ItemArrived += OnItemArrived;
+            _container = container;
+            BinNumber = binNumber;
             ItemsInBin = new List<IItem>();
         }
 
-        public IItemConveyer NextConveyer { get; set; }
-
         private List<IItem> ItemsInBin { get; set; }
-
-        public event ItemArrivedHandler ItemArrived;
-
-        public void PutItemInConveyer(IItem item)
-        {
-            ItemArrived?.Invoke(this, item);
-        }
-
-        private void OnItemArrived(object o, IItem item)
-        {
-            PutItemIntoBin(item);
-        }
 
         public void PutItemIntoBin(IItem item)
         {
@@ -38,7 +25,7 @@ namespace PortioningMachine.SystemComponents
 
         public void Empty()
         {
-            ItemsInBin = null;
+            _container.DumpItems(ItemsInBin);
         }
 
         public double CurrentWeight
@@ -47,11 +34,12 @@ namespace PortioningMachine.SystemComponents
             {
                 double weightSum = 0;
                 foreach (IItem item in ItemsInBin)
-                    weightSum += item.Weight;
+                    weightSum += item.ActualWeight;
                 return weightSum;
             }
         }
 
         public double TargetWeight { get; set; } = 1000; //gram
+        public int BinNumber { get; private set; }
     }
 }

@@ -14,7 +14,7 @@ namespace PortioningMachine
         static void Main(string[] args)
         {
             Container container = new Container();
-            ILog log = new Log();
+            ILog log = new ConsoleLog();
             _portioningMachine = new PortioningMachine(container, log, 10);
 
             _itemProvider.ItemArrived += FeedPortioningMachine;

@@ -19,11 +19,19 @@ namespace PortioningMachine.SystemComponents
             Task.Run(() =>
             {
                 Thread.Sleep(10);
+                WeighItem(item); 
                 NextConveyer.PutItemInConveyer(item);
             });
         }
 
+        private void WeighItem(IItem item)
+        {
+            item.AssignedWeight = item.ActualWeight;
+            ItemWeighed?.Invoke(this, item);
+        }
+
         public event ItemArrivedHandler ItemArrived;
+        public event ItemWeighedHandler ItemWeighed;
         public IItemConveyer NextConveyer { get; set; }
         public void PutItemInConveyer(IItem item)
         {

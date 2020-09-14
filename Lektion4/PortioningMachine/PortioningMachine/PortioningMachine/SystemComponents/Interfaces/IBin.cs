@@ -10,6 +10,7 @@ namespace PortioningMachine.SystemComponents.Interfaces
         void PutItemIntoBin(IItem item);
         double CurrentWeight { get; }
         double TargetWeight { get; set; }
+        int BinNumber { get; }
 
     }
 }

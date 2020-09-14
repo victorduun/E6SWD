@@ -1,27 +1,20 @@
 ﻿using PortioningMachine.SystemComponents;
 using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
-namespace PortioningMachine.ItemHandlers
+namespace PortioningMachine
 {
-    public class Container : IItemConveyer
+    public class Container
     {
-        public Container()
+        //TODO: Make event that items have been dumped
+
+
+        public void DumpItems(List<IItem> items)
         {
-            ItemArrived += OnItemArrived;
+            items = null;
         }
 
-        private void OnItemArrived(object o, IItem item)
-        {
-            throw new NotImplementedException();
-        }
 
-        IItemConveyer IItemConveyer.NextConveyer { get; set; } = null;
-
-        public event ItemArrivedHandler ItemArrived;
-
-        public void PutItemInConveyer(IItem item)
-        {
-            ItemArrived?.Invoke(this, item);
-        }
     }
 }

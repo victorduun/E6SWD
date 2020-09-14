@@ -12,33 +12,19 @@ namespace PortioningMachine.SystemComponents
 {
     public class Portioner : IPortioner, IItemConveyer
     {
-        private readonly IEnumerable<IItemConveyer> _bins;
 
-        public Portioner(IEnumerable<IItemConveyer> bins)
+        public void Eject(IItem item, IBin bin)
         {
-            _bins = bins;
-            ItemArrived += OnItemArrived;
+            bin.PutItemIntoBin(item);
         }
 
 
-        private void OnItemArrived(object o, IItem item)
-        {
-            Task.Run(() =>
-            {
-                NextConveyer = _bins.First();
-
-
-
-                Thread.Sleep(10);
-                NextConveyer.PutItemInConveyer(item);
-            });
-        }
-
-        public event ItemArrivedHandler ItemArrived;
-        public IItemConveyer NextConveyer { get; set; }
+        public event ItemArrivedHandler ItemArrived; 
+        public IItemConveyer NextConveyer { get; set; } = null; // Bins are not conveyers. Instead the items must be ejected into these
         public void PutItemInConveyer(IItem item)
         {
             ItemArrived?.Invoke(this, item);
         }
+
     }
 }
