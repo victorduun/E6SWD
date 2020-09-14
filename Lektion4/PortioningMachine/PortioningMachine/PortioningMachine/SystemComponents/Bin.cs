@@ -21,11 +21,13 @@ namespace PortioningMachine.SystemComponents
         public void PutItemIntoBin(IItem item)
         {
             ItemsInBin.Add(item);
+            ItemArrived?.Invoke(this, item);
         }
 
         public void Empty()
         {
             _container.DumpItems(ItemsInBin);
+            ItemsInBin = new List<IItem>();
         }
 
         public double CurrentWeight
@@ -41,5 +43,7 @@ namespace PortioningMachine.SystemComponents
 
         public double TargetWeight { get; set; } = 1000; //gram
         public int BinNumber { get; private set; }
+
+        public event ItemArrivedHandler ItemArrived;
     }
 }

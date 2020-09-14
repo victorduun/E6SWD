@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using PortioningMachine.ItemHandlers;
 
 namespace PortioningMachine.SystemComponents.Interfaces
 {
@@ -11,6 +12,8 @@ namespace PortioningMachine.SystemComponents.Interfaces
         double CurrentWeight { get; }
         double TargetWeight { get; set; }
         int BinNumber { get; }
+
+        event ItemArrivedHandler ItemArrived;
 
     }
 }

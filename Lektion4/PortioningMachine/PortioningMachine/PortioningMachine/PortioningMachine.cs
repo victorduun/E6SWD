@@ -40,15 +40,9 @@ namespace PortioningMachine
                 _log.LogMessage(i + " Arrived at infeed");
             });
 
-            _inFeed.ItemArrived += AssignItemToBin;
         }
 
-        private void AssignItemToBin(object o, IItem item)
-        {
-            
-            //Tell control unit to put item with id=id into some bin
-            //ControlUnit.AssignItemToBin(IItem item, IBin bin)
-        }
+       
 
         public void Feed(IItem item)
         {
