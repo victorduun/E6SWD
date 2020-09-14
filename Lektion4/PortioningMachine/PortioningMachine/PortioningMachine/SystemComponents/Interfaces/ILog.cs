@@ -6,5 +6,7 @@ namespace PortioningMachine.SystemComponents.Interfaces
 {
     public interface ILog
     {
+
+        void LogMessage(string msg);
     }
 }
