@@ -14,7 +14,7 @@ namespace PortioningMachine.SystemComponents.Algorithms
         private List<int> _binNumbers;
 
 
-        public int Next(List<IBin> bins)
+        public int Next(List<IBin> bins, IItem nextItem)
         {
             
             _binNumbers = bins.OrderBy(b=>b.BinNumber).Select(b=>b.BinNumber).ToList();

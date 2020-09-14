@@ -11,12 +11,5 @@ namespace PortioningMachine.SystemComponents
         public double AssignedWeight { get; set; }
         public int AssignedBinNumber { get; set; }
     }
-    public class ChickenBreast
-    {
-        public ChickenBreast()
-        {
 
-        }
-
-    }
 }

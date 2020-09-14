@@ -59,7 +59,7 @@ namespace PortioningMachine.SystemComponents
                 return weightSum;
             }
         }
-
+        public double Score { get;set; }
         public double TargetWeight { get; set; } = 1000; //gram
         public int BinNumber { get; private set; }
 

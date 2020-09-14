@@ -45,7 +45,7 @@ namespace PortioningMachine.SystemComponents
         private void OnItemWeighedEvent(object o, IItem item)
         {
             //TODO: Assign a proper binnumber
-            item.AssignedBinNumber = _assignmentAlgorithm.Next(Bins);
+            item.AssignedBinNumber = _assignmentAlgorithm.Next(Bins, item);
         }
 
         private void OnItemArrivedPortionerEvent(object o, IItem item)

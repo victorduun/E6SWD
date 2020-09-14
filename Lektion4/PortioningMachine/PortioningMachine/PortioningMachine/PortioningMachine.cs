@@ -34,7 +34,7 @@ namespace PortioningMachine
             _inFeed = new InFeed(_weight);
 
 
-            IAssignmentAlgorithm assignmentAlgorithm = new RoundRobinAlgorithm();
+            IAssignmentAlgorithm assignmentAlgorithm = new BinScoreAlgorithm();
             _controlUnit = new ControlUnit(_weight,_portioner,_bins, assignmentAlgorithm);
 
             _inFeed.ItemArrived += new ItemArrivedHandler(delegate(object o, IItem i)

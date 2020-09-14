@@ -19,6 +19,7 @@ namespace PortioningMachine.SystemComponents.Interfaces
     public interface IBin
     {
         void Empty();
+        public double Score { get; set; }
         void PutItemIntoBin(IItem item);
         double Giveaway { get; }
         double CurrentWeight { get; }
