@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using PortioningMachine.ItemHandlers;
 using PortioningMachine.SystemComponents;
+using PortioningMachine.SystemComponents.Algorithms;
 using PortioningMachine.SystemComponents.Interfaces;
 
 namespace PortioningMachine
@@ -33,11 +34,12 @@ namespace PortioningMachine
             _inFeed = new InFeed(_weight);
 
 
-            _controlUnit = new ControlUnit(_weight,_portioner,_bins);
+            IAssignmentAlgorithm assignmentAlgorithm = new RoundRobinAlgorithm();
+            _controlUnit = new ControlUnit(_weight,_portioner,_bins, assignmentAlgorithm);
 
             _inFeed.ItemArrived += new ItemArrivedHandler(delegate(object o, IItem i)
             {
-                _log.LogMessage(i + " Arrived at infeed");
+                _log.LogMessage($"Item with id {i.Id} arrived at infeed");
             });
 
             foreach (IBin bin in _bins)

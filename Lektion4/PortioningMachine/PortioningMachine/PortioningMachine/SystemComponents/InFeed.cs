@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PortioningMachine.SystemComponents
 {
-    public class InFeed : IInFeed, IItemConveyer
+    public class InFeed : IItemConveyer
     {
 
         public InFeed(IItemConveyer nextConveyer)

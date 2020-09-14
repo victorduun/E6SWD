@@ -6,7 +6,7 @@ using PortioningMachine.ItemHandlers;
 
 namespace PortioningMachine.SystemComponents
 {
-    public class Weight : IWeight, IItemConveyer
+    public class Weight : IItemConveyer
     {
         public Weight(IItemConveyer nextConveyer)
         {

@@ -9,12 +9,16 @@ namespace PortioningMachine.SystemComponents
 {
     public class ControlUnit
     {
+        private readonly IAssignmentAlgorithm _assignmentAlgorithm;
 
-        public ControlUnit(Weight weight, Portioner portioner, List<IBin> bins)
+        public ControlUnit(Weight weight, Portioner portioner, List<IBin> bins, IAssignmentAlgorithm assignmentAlgorithm)
         {
             Weight = weight;
             Portioner = portioner;
             Bins = bins;
+            _assignmentAlgorithm = assignmentAlgorithm;
+
+
             Weight.ItemWeighed += OnItemWeighedEvent;
             Portioner.ItemArrived += OnItemArrivedPortionerEvent;
 
@@ -23,6 +27,8 @@ namespace PortioningMachine.SystemComponents
                 bin.ItemArrived += CheckBinWeight;
             }
         }
+
+
 
         private void CheckBinWeight(object o, IItem item)
         {
@@ -39,14 +45,13 @@ namespace PortioningMachine.SystemComponents
         private void OnItemWeighedEvent(object o, IItem item)
         {
             //TODO: Assign a proper binnumber
-            item.AssignedBinNumber = Bins.First().BinNumber;
+            item.AssignedBinNumber = _assignmentAlgorithm.Next(Bins);
         }
 
         private void OnItemArrivedPortionerEvent(object o, IItem item)
         {
             Portioner portioner = (o as Portioner);
             portioner?.Eject(item, Bins?.FirstOrDefault(b=> b.BinNumber == item.AssignedBinNumber));
-            Console.WriteLine("Item ejected into bin");
         }
 
         public List<IBin> Bins { get; set; }

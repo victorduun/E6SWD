@@ -10,7 +10,7 @@ using PortioningMachine.ItemHandlers;
 
 namespace PortioningMachine.SystemComponents
 {
-    public class Portioner : IPortioner, IItemConveyer
+    public class Portioner : IItemConveyer
     {
 
         public void Eject(IItem item, IBin bin)
