@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Stocks.Interfaces
 {
@@ -10,8 +11,8 @@ namespace Stocks.Interfaces
     }
     public interface IStockIndex
     {
-        void ChangeStockPrice();
-        void GetAllStockTypes();
+        void ChangeStockPrice(IStock stock, double newPrice);
+        IEnumerable<IStock> GetAllStockTypes();
         double GetStockPrice(IStock stock);
 
         event EventHandler<StockPriceChangedEventMessage> StockPriceChangedEvent;
