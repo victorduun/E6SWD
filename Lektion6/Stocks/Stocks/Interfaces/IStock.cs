@@ -6,7 +6,7 @@ namespace Stocks.Interfaces
 {
     public interface IStock
     {
-        string Name { get; }
-        string Symbol { get; }
+        string Name {  get; }
+        string Symbol {  get;}
     }
 }
