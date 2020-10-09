@@ -10,7 +10,7 @@ namespace Stocks
     public class StockIndex : IStockIndex
     {
         //Stock, price
-        private Dictionary<IStock, double> _stockIndex;
+        private Dictionary<IStock, double> _stockIndex = new Dictionary<IStock, double>();
         public StockIndex(IEnumerable<IStock> validStocks)
         {
             var rand = new Random();
