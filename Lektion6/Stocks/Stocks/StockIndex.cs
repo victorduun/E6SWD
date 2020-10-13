@@ -13,13 +13,9 @@ namespace Stocks
         private Dictionary<IStock, double> _stockIndex = new Dictionary<IStock, double>();
         public StockIndex(IEnumerable<IStock> validStocks)
         {
-            var rand = new Random();
             foreach (var stock in validStocks)
             {
-                double minimum = 1;
-                double maximum = 5000;
-                double randomDouble = rand.NextDouble() * (maximum - minimum) + minimum;
-                _stockIndex.Add(stock, randomDouble);
+                _stockIndex.Add(stock, Helpers.StockRandomValueGenerator.Next());
             }
         }
 

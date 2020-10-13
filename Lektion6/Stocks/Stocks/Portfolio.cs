@@ -17,12 +17,14 @@ namespace Stocks
         public Portfolio(IStockIndex stockIndex)
         {
             _stockIndex = stockIndex;
-            //_stockIndex.StockPriceChangedEvent += OnStockPriceChangedEvent;
+            _stockIndex.StockPriceChangedEvent += OnStockPriceChangedEvent;
         }
 
         private void OnStockPriceChangedEvent(object? sender, StockPriceChangedEventMessage e)
         {
-            throw new NotImplementedException();
+            var pfSi = GetPortfolioStockInformations();
+            if (_stocks.Contains(e.Stock))
+                PortfolioPricesUpdated?.Invoke(this, EventArgs.Empty);
         }
 
         public void AddStock(IStock stock)
@@ -41,8 +43,7 @@ namespace Stocks
                         StockName = ds.Name,
                         StockSymbol = ds.Symbol,
                         StockValue = _stockIndex.GetStockPrice(ds),
-                    }
-                    );
+                    });
             return siDto;
         }
 
@@ -50,5 +51,6 @@ namespace Stocks
         {
             return _stocks.Sum(s => _stockIndex.GetStockPrice(s));
         }
+
     }
 }

@@ -3,6 +3,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.WebSockets;
+using System.Threading;
 
 namespace Stocks.Application
 {
@@ -31,6 +33,23 @@ namespace Stocks.Application
 
             portfolioDisplay.DisplayPortfolio();
 
+
+            var rand = new Random();
+
+            while (true)
+            {
+                int randomStockIndex = rand.Next(validStocks.Count());
+                var randomStock = validStocks.ToList()[randomStockIndex];
+
+                double oldStockValue = stockIndex.GetStockPrice(randomStock);
+                double newStockValue = Helpers.StockRandomValueGenerator.Next5PctDifference(oldStockValue);
+
+                Console.WriteLine("Changing stock value of {0} from {1:N1} to {2:N1}", randomStock.Symbol, oldStockValue, newStockValue);
+
+                stockIndex.ChangeStockPrice(randomStock, newStockValue);
+
+                Thread.Sleep(1000);
+            }
 
 
         }
