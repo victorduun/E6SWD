@@ -47,7 +47,9 @@ namespace Stocks.Test
             _uut.GetStockPrice(stock);
             _uut.ChangeStockPrice(stock, 100);
             _uut.ChangeStockPrice(stock, 1000);
-            Assert.Pass();
+
+            var newStockPrice = _uut.GetStockPrice(stock);
+            Assert.AreEqual(1000, newStockPrice);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Stocks.Interfaces
         public string StockName { get; set; }
         public string StockSymbol { get; set; }
         public int NumberOfStocks { get; set; }
-        public int StockValue { get; set; }
+        public double StockValue { get; set; }
     }
 
 

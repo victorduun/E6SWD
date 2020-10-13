@@ -21,11 +21,14 @@ namespace Stocks
 
         private void printer()
         {
-            Console.WriteLine("Symbol \t Name \t Number of stocks \t Price per stock \t Total stock value");
+            Console.WriteLine("|{0,10}|{1,50}|{2,16}|{3,16}|{4,18}|", "Symbol", "Name", "Number of stocks", "Price per stock", "Total stock value");
+
             foreach (var s in _portfolio.GetPortfolioStockInformations()) //insert dummy portfolio
             {
-                Console.WriteLine("{2} \t \t \t \t \t \t \t {2} \t {2} \t {2} ", s.StockSymbol, s.StockName, s.NumberOfStocks, s.StockValue);
+                Console.WriteLine("|{0,10}|{1,50}|{2,16}|{3,16:N1}|{4,18:N1}|", s.StockSymbol, s.StockName, s.NumberOfStocks, s.StockValue, s.StockValue * s.NumberOfStocks);
             }
+
+            Console.WriteLine("Total portfolio value: {0:N1}", _portfolio.GetPortfolioValue());
         }
 
 
