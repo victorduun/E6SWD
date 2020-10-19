@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSorter", "SuperSorter\SuperSorter.csproj", "{AF824065-80EE-41C8-8E38-33904B6EE307}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSorter.Application", "SuperSorter.Application\SuperSorter.Application.csproj", "{7EDA96E6-957A-459C-B710-6407204E96BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF824065-80EE-41C8-8E38-33904B6EE307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF824065-80EE-41C8-8E38-33904B6EE307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF824065-80EE-41C8-8E38-33904B6EE307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF824065-80EE-41C8-8E38-33904B6EE307}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EDA96E6-957A-459C-B710-6407204E96BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EDA96E6-957A-459C-B710-6407204E96BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EDA96E6-957A-459C-B710-6407204E96BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EDA96E6-957A-459C-B710-6407204E96BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {97A9D8FB-7ADF-40DA-9DEE-429E5A124FBC}
+	EndGlobalSection
+EndGlobal
