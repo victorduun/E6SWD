@@ -1,0 +1,12 @@
+mediater  		2 https://www.dofactory.com/net/mediator-design-pattern
+chain of res 	2 https://www.dofactory.com/net/chain-of-responsibility-design-pattern
+command 		4 https://www.dofactory.com/net/command-design-pattern
+composite 		4 https://www.dofactory.com/net/composite-design-pattern
+decorator		3 https://www.dofactory.com/net/decorator-design-pattern
+interpreter		1 https://www.dofactory.com/net/interpreter-design-pattern
+memento 		1 https://www.dofactory.com/net/memento-design-pattern
+visitor			1 https://www.dofactory.com/net/visitor-design-pattern
+disrupter (A)
+CQRS (A)
+reactor (A)
+message bus (A)
